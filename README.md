@@ -9,3 +9,8 @@
 
 Pedro Rua Neto - 10309441
 
+## Introdução
+
+
+![Arquitetura do projeto embarcado](https://i.ibb.co/vX0XfNx/imagem-2024-01-03-202929061.png)
+
