@@ -26,7 +26,7 @@ Para o controle PID de um motor DC é necessário as equações da dinâmica do 
 
 ![Equações constitutivas de um motor DC](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/EQ.png)
 
-E portanto, para controle de velocidade, a função transferência final é como abaixo:
+Rearranjando os termos, a função transferência do processo é como abaixo:
 
 ![Função Transferência](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/TF.png)
 
@@ -38,6 +38,12 @@ Onde:
 * (Kt) Constante de torque do motor [N.m/Amp]
 * (R) Resistências elétrica [Ohm]
 * (L) Indutância elétrica [H]
+
+Assumindo Ke=Kt=K
+
+E portanto para o controle PID a entrada de tensão é dada por:
+
+$V = (\dot{\theta{_ref}} - \dot{\theta}) (K_p + \frac{K_I}{s} + K_d s)$
 
 ##
 
