@@ -55,13 +55,13 @@ Tuning!!! -> Matlab/simulink
 
 ## Implementação e compilação
 
-Para compilar o código na placa VF50, primeiro é necessário fazer a conexão via ethernet com o seguinte comando no terminal do host, utilizando protocolo SSH:
+Para realizar a compilação do código PID é necessário a configuração da toolchain por meio do pacote SDK adequado para a placa VF50, pois a arquitetura do processador da placa é diferente da arquitetura do processador do host, portanto é necessário o processo de compilação cruzada. O pacote SDK se encontra no próprio site da Toradex. (https://drive.google.com/file/d/1hs9FL2272A4lUoBjPSdQIjZ0Vn0fZ6ZQ/view)
+
+Então, é necessário fazer a conexão via ethernet com o seguinte comando no terminal do host, utilizando protocolo SSH:
 
 ```
 ssh root@192.168.1.100
 ```
-
-Estabelecida a conexão, para realizar a compilação do código PID é necessário a configuração da toolchain por meio do pacote SDK adequado para a placa VF50, pois a arquitetura do processador da placa é diferente da arquitetura do processador do host, portanto é necessário o processo de compilação cruzada. O pacote SDK se encontra no próprio site da Toradex. (https://drive.google.com/file/d/1hs9FL2272A4lUoBjPSdQIjZ0Vn0fZ6ZQ/view)
 
 Para compilar o código e carregá-lo na placa, são necessários o seguintes comandos no terminal:
 
