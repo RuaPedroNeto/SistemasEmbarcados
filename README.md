@@ -69,12 +69,18 @@ Para compilar o código e carregá-lo na placa, são necessários o seguintes co
 $CC -Wall controle.c -o pid
 
 scp pid root@192.168.1.100:/home/root
-``` 
+
+```
+
+No terminal da placa, o comando para rodar o código é o seguinte:
+
+```
+.\pid
+```
 
 ## To do
 
 - ??? Tuning dos ganhos
-- ??? Implementação do código PID => Interface com a EPOS
+- ??? Interface com a EPOS
 - ??? Checar pinos de input/output no datasheet da placa (código acende led)
 - ??? Protocolo CAN
-- ??? Explicar Toolchain
