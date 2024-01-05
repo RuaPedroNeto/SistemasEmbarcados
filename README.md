@@ -75,7 +75,7 @@ scp pid root@192.168.1.100:/home/root
 No terminal da placa, o comando para rodar o código é o seguinte:
 
 ```
-.\pid
+./pid
 ```
 
 ## To do
