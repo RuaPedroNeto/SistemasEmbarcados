@@ -16,7 +16,7 @@ Pedro Rua Neto - 10309441
 Para o desenvolvimento do projeto desta disciplina, foi proposto o uso de uma VS50 Colibri Viola para o controle de velocidade utilizando PID em um motor DC simulando a funcionalidade de um motor de esteira de academia, portanto também é necessário que o sistema se adeque conforme a necessidade do usuário.
 
 ## Arquitetura
-De acordo com o objetivo deste projeto, a partir de um host com linux será compilado o código de controle em uma placa VS50 Colibri Viola, a qual envia o sinal de controle para o controlador do amplificador de potência (EPOS), que libera a tensão requerida para o motor MAXON. Com auxílio de um encoder já embutido no motor, o sinal de velocidade angular é lido pela placa. Outra interface de entrada do usuário deve ser adicionada para estabelecer a velocidade desejada (velocidade de referência), para isso, dois botões seriam utilizados para aumentar ou diminuir a velocidade. Consequentemente, um display de velocidade de referência pode ser implementado para verificação.
+De acordo com o objetivo deste projeto, a partir de um host com linux será compilado o código de controle em uma placa VS50 Colibri Viola, a qual envia o sinal de controle para o controlador do amplificador de potência (EPOS), que libera a tensão requerida para o motor MAXON (10 V). Com auxílio de um encoder já embutido no motor, o sinal de velocidade angular é lido pela placa. Outra interface de entrada do usuário deve ser adicionada para estabelecer a velocidade desejada (velocidade de referência), para isso, dois botões seriam utilizados para aumentar ou diminuir a velocidade. Consequentemente, um display de velocidade de referência pode ser implementado para verificação.
 
 Conforme o código de controle, a placa deve comparar os valores de velocidade de referência e velocidade medida pelo encoder, a partir da diferença desses valores, o código implementa o PID sobre o sinal de tensão para o motor de acordo com os ganhos Kp, Ki, e Kd, os quais devem ser configurados por um processo de tuning previamente.
 
@@ -27,22 +27,25 @@ A arquitetura do sistema embarcado é ilustrada pela imagem abaixo.
 ## PID
 Para o controle PID de um motor DC é necessário as equações da dinâmica do sistema conforme abaixo:
 
-![Equações constitutivas de um motor DC](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/EQ.png)
+$Js\dot{\theta} + b\dot{\theta} = K_t i$
+
+$Lsi + Ri = V - K_e \dot{\theta}$
 
 Rearranjando os termos, a função transferência do processo é como abaixo:
 
-![Função Transferência](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/TF.png)
+$T(s) = \frac{K_t}{(Ls+R)(Js+b) + K_t K_e}$
 
-Onde:
+Onde, conforme datasheet:
 
-* (J) Momento de inercia do rotor [kg.m^2]
-* (b) Constante de fricção viscosa do moto [N.m.s]
-* (Ke) Constante de força eletromotriz [V/rad/sec]
-* (Kt) Constante de torque do motor [N.m/Amp]
-* (R) Resistências elétrica [Ohm]
-* (L) Indutância elétrica [H]
+* (J) Momento de inercia do rotor [kg.m^2] = 5,65.10^-8
+* (b) Constante de fricção viscosa do moto [N.m.s] = 2,706.10^-7
+* (Ke) Constante de força eletromotriz [V/rad/sec] = 6,92.10^-3
+* (Kt) Constante de torque do motor [N.m/Amp] = 6,94.10^-3
+* (R) Resistências elétrica [Ohm] = 6,6
+* (L) Indutância elétrica [H] = 0,223.10^-3
 
-Assumindo Ke=Kt=K
+Nota: 
+$b = \frac{Ktorque . Inoload}{\dot{\theta noload}}$
 
 E para o controle PID a entrada de tensão é dada por:
 
@@ -51,9 +54,8 @@ $V = (\dot{\theta{_ref}} - \dot{\theta}) (K_p + \frac{K_I}{s} + K_d s)$
 
 ## To do
 
-??? Tuning dos ganhos
-??? Implementação do código PID => Interface com a EPOS
-??? Checar pinos de input/output no datasheet da placa (código acende led)
-??? Atualizar parametros do motor conforme Datasheet
-??? Protocolo CAN
-??? Explicar Toolchain
+- ??? Tuning dos ganhos
+- ??? Implementação do código PID => Interface com a EPOS
+- ??? Checar pinos de input/output no datasheet da placa (código acende led)
+- ??? Protocolo CAN
+- ??? Explicar Toolchain
