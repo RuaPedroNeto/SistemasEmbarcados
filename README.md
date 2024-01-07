@@ -79,6 +79,8 @@ E portanto o resultado final é ilustrado na figura a seguir.
 
 Portanto, o sistema será superamortecido e os ganhos proporcionais e derivativos foram nulos, logo o controle que atende os requisitos do projeto é um PI com ganho Ki = 0.15721.
 
+O file simulink se encontra em ".../src/tuninpid.slx"
+
 ## Implementação e compilação
 
 Para realizar a compilação do código PID é necessário a configuração da toolchain por meio do pacote SDK adequado para a placa VF50, pois a arquitetura do processador da placa é diferente da arquitetura do processador do host, portanto é necessário o processo de compilação cruzada. O pacote SDK se encontra no próprio site da Toradex. (https://drive.google.com/file/d/1hs9FL2272A4lUoBjPSdQIjZ0Vn0fZ6ZQ/view)
