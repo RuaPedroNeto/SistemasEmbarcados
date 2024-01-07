@@ -77,10 +77,28 @@ E portanto o resultado final é ilustrado na figura a seguir.
 
 ![Resultado final - Resposta do motor com controle PI a entrada step unitário](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/response.jpg)
 
-Portanto, o sistema será superamortecido e os ganhos proporcionais e derivativos foram nulos, logo o controle que atende os requisitos do projeto é um PI com ganho Ki = 0.15721.
+Portanto, o sistema será superamortecido e os ganhos proporcionais e derivativos foram nulos, logo o controle que atende os requisitos do projeto é apenas integrativo com ganho Ki = 0.15721.
 
 O file simulink se encontra em ".../src/tuninpid.slx"
 
+## Interface EPOS2 70/10
+A configuração de hardware deve ser montada conforme instruções contidas no documento EPOS2 70/10 Hardware references. A imagem abaixo ilustra esta configuração.
+
+![Interface com a EPOS](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/EPOS_CONFIG.png)
+
+Serão utilizadas as portas de alimentação (Power Supply - 42 V), motor e encoder (J2 e J4 respectivamente), e portas CAN para comunicação com a placa colibri viola VF50 (J7/J8).
+
+Nota: Existe a possibilidade de utilizar o wizard do controlador da EPOS para fazer a configuração e o tuning de uma maneira mais rápida. (Vide video: https://www.youtube.com/watch?v=1A3wtirKTC8).
+
+### Protocolo CAN
+O uso dos pinos com protocolo CAN na EPOS é feito conforme especificações do datasheet:
+
+![EPOS - CAN - Especificações](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/Can%20data.png)
+
+![EPOS - CAN - Hardware](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/CAN_Conn.png)
+
+
+ 
 ## Implementação e compilação
 
 Para realizar a compilação do código PID é necessário a configuração da toolchain por meio do pacote SDK adequado para a placa VF50, pois a arquitetura do processador da placa é diferente da arquitetura do processador do host, portanto é necessário o processo de compilação cruzada. O pacote SDK se encontra no próprio site da Toradex. (https://drive.google.com/file/d/1hs9FL2272A4lUoBjPSdQIjZ0Vn0fZ6ZQ/view)
@@ -111,6 +129,6 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 
 ## To do
 
-- ??? Interface com a EPOS
+- ??? Interface com a EPOS2 70/10
 - ??? Checar pinos de input/output no datasheet da placa (código acende led)
 - ??? Protocolo CAN
