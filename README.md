@@ -47,11 +47,18 @@ Onde, conforme datasheet (https://www.maxongroup.com/maxon/view/product/motor/dc
 Nota: 
 $b = \frac{Ktorque . Inoload}{\dot{\theta noload}}$
 
+Detalhe: Este é um modelo simplificado que não considera a caixa de redução. Um modelo mais completo pode ser desenvolvido como descrito pelo pdf: https://edisciplinas.usp.br/pluginfile.php/4051964/mod_resource/content/2/AulaMatlabSCI2017.pdf
+
 E para o controle PID a entrada de tensão é dada por:
 
 $V = (\dot{\theta{_ref}} - \dot{\theta}) (K_p + \frac{K_I}{s} + K_d s)$
 
-Tuning!!! -> Matlab/simulink
+Para encontrar os valores de ganhos, foi utilizado o software Simulink.
+
+Define-se o controle de malha fechada de acordo o diagrama de blocos abaixo
+
+![Diagrama de blocos - PID Malha Fechada](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/ClosedLoop.png)
+
 
 ## Implementação e compilação
 
