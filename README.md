@@ -146,7 +146,17 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 ./control
 ```
 
+## Considerações Finais
+Para otimização do projeto realizado é necessário a implementação e validação dos conceitos desenvolvidos em bancada de teste. Verificada o funcionamento do código de controle do motor, o próximo passo seria a implementação de dois botões e um display LCD.
+
+Os botões são responsáveis pelo aumento/redução da velocidade de referência, enquanto o display LCD deve mostrar ao usuário este valor.
+Um display 7 segmentos necessita de 8 pinos, enquanto os dois botões usaria 4 pinos.
+
+Os pinos disponíveis para conexão GPIO são ilustrados pela figura a seguir.
+
+![Pinos para GPIO - Colibri VF50 - Viola](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/PINOS_VIOLA.png)
+
 ## To do
 
-- ??? Quais bibliotecas e funções usar em C para o protocolo CAN https://www.youtube.com/watch?v=R-r5qIOTjOo
-- ??? Conversão do valor do valor de tensão calculado pelo pid para o valor enviado para a EPOS. Qual a equação/Função que realiza isso?
+- ??? Conversão do valor do valor de tensão calculado pelo pid para o valor enviado para a EPOS. Qual a equação/Função que realiza isso? => Checar guia EPOS Command Library
+- ??? Criar esboço do código: inicialização da epos, comunicação, e transmissão de dados. (Ler e entender as funções)
