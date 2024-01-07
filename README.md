@@ -35,14 +35,14 @@ Rearranjando os termos, a função transferência do processo é como abaixo:
 
 $T(s) = \frac{K_t}{(Ls+R)(Js+b) + K_t K_e}$
 
-Onde, conforme datasheet:
+Onde, conforme datasheet (https://www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re25/118754):
 
-* (J) Momento de inercia do rotor [kg.m^2] = 5,65.10^-8
-* (b) Constante de fricção viscosa do moto [N.m.s] = 2,706.10^-7
-* (Ke) Constante de força eletromotriz [V/rad/sec] = 6,92.10^-3
-* (Kt) Constante de torque do motor [N.m/Amp] = 6,94.10^-3
-* (R) Resistências elétrica [Ohm] = 6,6
-* (L) Indutância elétrica [H] = 0,223.10^-3
+* (J) Momento de inercia do rotor [kg.m^2] = 10.6*10^-7
+* (b) Constante de fricção viscosa do moto [N.m.s] = 7.72*10^-7
+* (Ke) Constante de força eletromotriz [V/rad/sec] = 35.6*10^-3
+* (Kt) Constante de torque do motor [N.m/Amp] = 35.6*10^-3
+* (R) Resistências elétrica [Ohm] = 5.29
+* (L) Indutância elétrica [H] = 0.551*10^-3
 
 Nota: 
 $b = \frac{Ktorque . Inoload}{\dot{\theta noload}}$
