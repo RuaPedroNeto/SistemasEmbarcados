@@ -1,4 +1,4 @@
-![image](https://github.com/RuaPedroNeto/SistemasEmbarcados/assets/143453630/bf5bb599-9ec4-458e-9fa1-7cedff49e31d)# SistemasEmbarcados
+# SistemasEmbarcados
 
 **Departamento de Engenharia Aeronáutica da Escola de Engenharia de São Carlos/Universidade de São Paulo**
 
@@ -97,14 +97,12 @@ O uso dos pinos com protocolo CAN na EPOS é feito conforme especificações do 
 
 ![EPOS - CAN - Hardware](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/CAN_Conn.png)
 
-
 Enquanto, conforme datasheet da placa Colibri VF50, os pinos para comunicação CAN são o 63 para receiver (RX) e 55 para transmitter (TX).
 
 ![VF50 - CAN - Especificações](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/Colibri_CAN.png)
 
 Detalhes na implementação do cabeamento devem ser seguidos conforme video: https://www.youtube.com/watch?v=YBrU_eZM110
  (Ex: Implementação de resistor de 120 Ohms entre CAN-H e CAN-L; Espaçamento de no máximo 30 cm dos hardwares com o barramento)
- 
 
 Para se comunicar com a EPOS e utilizar o protocolo CAN é necessário bibliotecas especifícas. De acordo com o guia "EPOS Command Library", a biblioteca a ser utilizada para linux é a "libEposCmd.so" (https://github.com/yoshito-n-students/eposx_hardware/blob/devel/eposx_library/lib/arm/v7/libEposCmd.so.6.5.1.0) (http://www.maxonmotor.com/medias/sys_master/root/8815100330014/EPOS-Linux-Library-En.zip)
 
