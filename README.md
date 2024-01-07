@@ -77,7 +77,7 @@ E portanto o resultado final é ilustrado na figura a seguir.
 
 ![Resultado final - Resposta do motor com controle PI a entrada step unitário](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/response.jpg)
 
-Portanto, o sistema será superamortecido e os ganhos proporcionais e derivativos foram nulos, logo o controle que atende os requisitos do projeto é um PI.
+Portanto, o sistema será superamortecido e os ganhos proporcionais e derivativos foram nulos, logo o controle que atende os requisitos do projeto é um PI com ganho Ki = 0.15721.
 
 ## Implementação e compilação
 
