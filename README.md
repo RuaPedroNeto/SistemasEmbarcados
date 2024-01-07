@@ -59,6 +59,25 @@ Define-se o controle de malha fechada de acordo o diagrama de blocos abaixo
 
 ![Diagrama de blocos - PID Malha Fechada](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/ClosedLoop.png)
 
+O PID implementado pelo simulink é da seguinte forma:
+
+$PID(s) = (P + \frac{I}{s} + D \frac{N}{1+N \frac{1}{s}})$
+
+Notas: 
+* Estabeleceu-se a saturação de tensão como +-42 V, para que o controle não gere soluções que extrapolem a capacidade do motor.
+
+Para definição dos ganhos, os requisitos para esse projeto foram:
+* 50-60% da resposta em 200 ms, que é equivalente ao tempo de resposta do usuário;
+* Overshoot = 0 %;
+* Estabilidade.
+
+E portanto o resultado final é ilustrado na figura a seguir.
+
+![Tuning PID - Simulink](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/tuningpid.png)
+
+![Resultado final - Resposta do motor com controle PI a entrada step unitário](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/response.jpg)
+
+Portanto, o sistema será superamortecido e os ganhos proporcionais e derivativos foram nulos, logo o controle que atende os requisitos do projeto é um PI.
 
 ## Implementação e compilação
 
