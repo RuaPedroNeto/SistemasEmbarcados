@@ -1,4 +1,4 @@
-# SistemasEmbarcados
+![image](https://github.com/RuaPedroNeto/SistemasEmbarcados/assets/143453630/bf5bb599-9ec4-458e-9fa1-7cedff49e31d)# SistemasEmbarcados
 
 **Departamento de Engenharia Aeronáutica da Escola de Engenharia de São Carlos/Universidade de São Paulo**
 
@@ -104,10 +104,19 @@ Enquanto, conforme datasheet da placa Colibri VF50, os pinos para comunicação 
 
 Detalhes na implementação do cabeamento devem ser seguidos conforme video: https://www.youtube.com/watch?v=YBrU_eZM110
  (Ex: Implementação de resistor de 120 Ohms entre CAN-H e CAN-L; Espaçamento de no máximo 30 cm dos hardwares com o barramento)
+ 
 
+Para se comunicar com a EPOS e utilizar o protocolo CAN é necessário bibliotecas especifícas. De acordo com o guia "EPOS Command Library", a biblioteca a ser utilizada para linux é a "libEposCmd.so" (https://github.com/yoshito-n-students/eposx_hardware/blob/devel/eposx_library/lib/arm/v7/libEposCmd.so.6.5.1.0) (http://www.maxonmotor.com/medias/sys_master/root/8815100330014/EPOS-Linux-Library-En.zip)
 
+Para utilizar o protocolo CAN, as funções utilizadas são:
 
-A implementação manual do protocolo CAN, requere bibliotecas especifícas para enviar e receber os dados conforme o layout padrão.
+````
+VCS_Send_CAN_Frame(parameters)
+
+VCS_Read_CAN_Frame(parameters)
+````
+
+![Funções de transmição de dados via CAN](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/CAN_Function.png)
  
 ## Implementação e compilação
 
@@ -139,6 +148,5 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 
 ## To do
 
-- ??? Checar pinos de input/output no datasheet da placa (código acende led)
-- ??? Quais bibliotecas e funções usar em C para o protocolo CAN
+- ??? Quais bibliotecas e funções usar em C para o protocolo CAN https://www.youtube.com/watch?v=R-r5qIOTjOo
 - ??? Conversão do valor do valor de tensão calculado pelo pid para o valor enviado para a EPOS. Qual a equação/Função que realiza isso?
