@@ -2,9 +2,9 @@
 #define PID_CONSTANTS_H
 
 //! ------------------------- PID GAINS --------------------------
-#define PROPORTIONAL_GAIN 1
-#define INTEGRAL_GAIN     1
-#define DERIVATIVE_GAIN   1
+#define PROPORTIONAL_GAIN 0
+#define INTEGRAL_GAIN     0.15721
+#define DERIVATIVE_GAIN   0
 // ---------------------------------------------------------------
 
 #define SAMPLING_FREQUENCY          1000
@@ -12,10 +12,10 @@
 
 // ---------------------------------------------------------------
 // Safety boundaries
-#define MAX_INTEGRATOR_LIMIT 10
-#define MIN_INTEGRATOR_LIMIT -10
-#define MAX_OUTPUT           10
-#define MIN_OUTPUT           10
+#define MAX_INTEGRATOR_LIMIT 42
+#define MIN_INTEGRATOR_LIMIT -42
+#define MAX_OUTPUT           42
+#define MIN_OUTPUT           42
 // ---------------------------------------------------------------
 
 #endif  // PID_CONSTANTS_H
