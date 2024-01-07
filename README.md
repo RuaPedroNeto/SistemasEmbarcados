@@ -94,16 +94,19 @@ ssh root@192.168.1.100
 Para compilar o código e carregá-lo na placa, são necessários o seguintes comandos no terminal:
 
 ```
-$CC -Wall controle.c -o pid
+$CC -Wall main.c -o control
+$CC -Wall pid.c -o pid
 
+scp control root@192.168.1.100:/home/root
 scp pid root@192.168.1.100:/home/root
-
+scp pid.h root@192.168.1.100:/home/root
+scp pid_constants.h root@192.168.1.100:/home/root
 ```
 
 No terminal da placa, o comando para rodar o código é o seguinte:
 
 ```
-./pid
+./control
 ```
 
 ## To do
