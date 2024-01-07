@@ -145,9 +145,9 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 ```
 
 ## Considerações Finais
-Para otimização do projeto realizado é necessário a implementação e validação dos conceitos desenvolvidos em bancada de teste. Verificada o funcionamento do código de controle do motor, o próximo passo seria a implementação de dois botões e um display LCD.
+Para otimização do projeto realizado é necessário a implementação e validação dos conceitos desenvolvidos em bancada de teste. Verificado o funcionamento do código de controle do motor, o próximo passo seria a implementação de dois botões e um display 7 segmentos.
 
-Os botões são responsáveis pelo aumento/redução da velocidade de referência, enquanto o display LCD deve mostrar ao usuário este valor.
+Os botões são responsáveis pelo aumento/redução da velocidade de referência, enquanto o display deve mostrar ao usuário este valor.
 Um display 7 segmentos necessita de 8 pinos, enquanto os dois botões usaria 4 pinos.
 
 Os pinos disponíveis para conexão GPIO são ilustrados pela figura a seguir.
