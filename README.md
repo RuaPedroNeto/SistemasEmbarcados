@@ -108,7 +108,6 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 
 ## To do
 
-- ??? Tuning dos ganhos
 - ??? Interface com a EPOS
 - ??? Checar pinos de input/output no datasheet da placa (código acende led)
 - ??? Protocolo CAN
