@@ -98,6 +98,16 @@ O uso dos pinos com protocolo CAN na EPOS é feito conforme especificações do 
 ![EPOS - CAN - Hardware](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/CAN_Conn.png)
 
 
+Enquanto, conforme datasheet da placa Colibri VF50, os pinos para comunicação CAN são o 63 para receiver (RX) e 55 para transmitter (TX).
+
+![VF50 - CAN - Especificações](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/Colibri_CAN.png)
+
+Detalhes na implementação do cabeamento devem ser seguidos conforme video: https://www.youtube.com/watch?v=YBrU_eZM110
+ (Ex: Implementação de resistor de 120 Ohms entre CAN-H e CAN-L; Espaçamento de no máximo 30 cm dos hardwares com o barramento)
+
+
+
+A implementação manual do protocolo CAN, requere bibliotecas especifícas para enviar e receber os dados conforme o layout padrão.
  
 ## Implementação e compilação
 
@@ -129,6 +139,6 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 
 ## To do
 
-- ??? Interface com a EPOS2 70/10
 - ??? Checar pinos de input/output no datasheet da placa (código acende led)
-- ??? Protocolo CAN
+- ??? Quais bibliotecas e funções usar em C para o protocolo CAN
+- ??? Conversão do valor do valor de tensão calculado pelo pid para o valor enviado para a EPOS. Qual a equação/Função que realiza isso?
