@@ -10,7 +10,7 @@
 
 ## Aluno
 
-Pedro Rua Neto - 10309441
+Pedro Rua Neto - 10309441 (Desenvolvimento de software, simulações, revisão bibliográfica, considerações de hardware, relatório)
 
 ## Resumo
 O objetivo deste projeto é desenvolver um motor para uma esteira de academia, desta forma, é requerido o controle PID para um motor DC (MAXON 118754) utilizando uma placa VS50 Colibri Viola e uma EPOS2 70/10 via protocolo CAN. Para interação com o usuário e definição da velocidade de refêrencia, é necessário a implementação de dois botões e uma display 7 segmentos. Neste relatório consta o desenvolvimento conceitual do projeto. A primeira parte é a definição da arquitetura do problema, referente à comunicação entre os hardwares. Então, foi definido a malha de controle fechada por meio do simulink e realizado o tuning dos ganhos do controlador. Referente ao protocolo CAN e interface entre a VF50 e a EPOS, foram feitas considerações de hardware e software, declarando quais portas devem ser utilizadas, e quais funções da biblioteca fornecida pela MAXON podem ser utéis. Por fim, foram realizadas indicações sobre como realizar a compilação cruzada e a implementação do código desenvolvido na placa utilizando uma host LINUX.
