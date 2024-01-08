@@ -12,8 +12,11 @@
 
 Pedro Rua Neto - 10309441
 
+## Resumo
+O objetivo deste projeto é desenvolver um motor para uma esteira de academia, desta forma, é requerido o controle PID para um motor DC (MAXON 118754) utilizando uma placa VS50 Colibri Viola e uma EPOS2 70/10 via protocolo CAN. Para interação com o usuário e definição da velocidade de refêrencia, é necessário a implementação de dois botões e uma display 7 segmentos. Neste relatório consta o desenvolvimento conceitual do projeto. A primeira parte é a definição da arquitetura do problema, referente à comunicação entre os hardwares. Então, foi definido a malha de controle fechada por meio do simulink e realizado o tuning dos ganhos do controlador. Referente ao protocolo CAN e interface entre a VF50 e a EPOS, foram feitas considerações de hardware e software, declarando quais portas devem ser utilizadas, e quais funções da biblioteca fornecida pela MAXON podem ser utéis. Por fim, foram realizadas indicações sobre como realizar a compilação cruzada e a implementação do código desenvolvido na placa utilizando uma host LINUX.
+
 ## Introdução
-Para o desenvolvimento do projeto desta disciplina, foi proposto o uso de uma VS50 Colibri Viola para o controle de velocidade utilizando PID em um motor DC simulando a funcionalidade de um motor de esteira de academia, portanto também é necessário que o sistema se adeque conforme a necessidade do usuário.
+Para o desenvolvimento do projeto desta disciplina, foi proposto o uso de uma VS50 Colibri Viola para o controle de velocidade utilizando PID em um motor DC simulando a funcionalidade de um motor de esteira de academia, portanto também é necessário que o sistema se adeque conforme a interação com o usuário, sendo necessário a implementação de dois botões e uma display de 7 segmentos.
 
 ## Arquitetura
 De acordo com o objetivo deste projeto, a partir de um host com linux será compilado o código de controle em uma placa VS50 Colibri Viola, a qual envia o sinal de controle para o controlador do amplificador de potência (EPOS), que libera a tensão requerida para o motor MAXON (118754). Com auxílio de um encoder já embutido no motor, o sinal de velocidade angular é lido pela placa. Outra interface de entrada do usuário deve ser adicionada para estabelecer a velocidade desejada (velocidade de referência), para isso, dois botões seriam utilizados para aumentar ou diminuir a velocidade. Consequentemente, um display de velocidade de referência pode ser implementado para verificação.
@@ -102,16 +105,16 @@ Enquanto, conforme datasheet da placa Colibri VF50, os pinos para comunicação 
 ![VF50 - CAN - Especificações](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/Colibri_CAN.png)
 
 Detalhes na implementação do cabeamento devem ser seguidos conforme video: https://www.youtube.com/watch?v=YBrU_eZM110
- (Ex: Implementação de resistor de 120 Ohms entre CAN-H e CAN-L; Espaçamento de no máximo 30 cm dos hardwares com o barramento)
+ (Ex: Implementação de resistor de 120 Ohms entre CAN-H e CAN-L; Espaçamento de no máximo 30 cm dos hardwares com o barramento; Entrelaçar cabos CAN_L e CAN_H; Blindagem eletromagnética)
 
 Para se comunicar com a EPOS e utilizar o protocolo CAN é necessário bibliotecas especifícas. De acordo com o guia "EPOS Command Library", a biblioteca a ser utilizada para linux é a "libEposCmd.so" (https://github.com/yoshito-n-students/eposx_hardware/blob/devel/eposx_library/lib/arm/v7/libEposCmd.so.6.5.1.0) (http://www.maxonmotor.com/medias/sys_master/root/8815100330014/EPOS-Linux-Library-En.zip)
 
 Para utilizar o protocolo CAN, as funções utilizadas são:
 
 ````
-VCS_Send_CAN_Frame(parameters)
+VCS_Send_CAN_Frame()
 
-VCS_Read_CAN_Frame(parameters)
+VCS_Read_CAN_Frame()
 ````
 
 ![Funções de transmição de dados via CAN](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/CAN_Function.png)
