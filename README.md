@@ -210,8 +210,48 @@ VCS_SetOperationMode(); ou VCS_ActivateVelocityMode();
 VCS_SetVelocityMust()
 ````
 
-Portanto, após leitura do guia EPOS Command Library, não há informações sobre como indicar à EPOS o valor de tensão que o código de PID retorna.
+Portanto, após leitura do guia EPOS Command Library, não há informações sobre como indicar à EPOS o valor de tensão que o código de PID retorna para ser aplicado ao motor. Desta forma, o uso da EPOS simplifica muito o trabalho, sendo apenas necessário usar as funções de controle e modo de operação dá própria biblioteca. 
 
+Em casos em que o desenvolvedor não possua uma EPOS a disposição, seria necessário entender como passar a informação de tensão aplicada ao motor para a eletrônica de potência do próprio motor. Por exemplo, este é um caso em que o desenvolvedor utiliza um arduino e uma ESCON 50/5 para controlar a posição de um motor EC da MAXON (https://www.youtube.com/watch?v=XPmuIOJvFx0). Vide descrição do vídeo para acesso ao código. Neste caso foi necessário a conversão da tensão que o PID retorna, para um valor entre 255 e 0 que a ESCON 50/5 traduz e controla o motor. A parte do código citada é descrita abaixo.
+
+````
+void control() 
+{
+  desired_step = (int)(desired_angle * step_to_deg); // Conversão angulo - passo
+  
+  error = desired_step - pulseCount; // Definição do erro para o controle
+
+  double pid_out = error * Kp+ Kd * (error-prev_error); // Equacao de controle
+  prev_error = error;
+  
+  if (pid_out > 0){  // Saturacao para o controle.
+    if (pid_out > 100)
+      pid_out = 100;
+    else if (pid_out < 10)
+      pid_out = 10;
+  }
+
+  else { // Saturacao para o controle.
+    if (pid_out < -100)
+      pid_out = -100;
+    else if (pid_out > -10)
+      pid_out = -10;
+  }
+  
+  motor_start(pid_out); // Chama a funcao motor_start dando como parametro o valor de tensao calculado pela funcao de controle
+}
+
+void motor_start(double spd){
+  if (spd != 0 && status1 == 1) { // se o parametro recebido pela funcao é diferente de zero, ativa o pino descrito pela variável en => Liga o pino do motor
+    digitalWrite(en, HIGH);
+
+    double out = map(spd, -100, 100, 255, 0); // Transforma o valor de tensao dado pelo pid em uma escala de 255 a 0 
+    analogWrite(sped, out); // envia o valor de tensao transformado para a ESCON 50/5
+  }
+  else{ // se o parametro recebido pela funcao é igual a zero, desativa o pino descrito pela variável en => Desliga o pino do motor
+    digitalWrite(en, LOW);
+  }
+````
 
 ## Implementação e compilação
 
@@ -255,3 +295,5 @@ Os pinos disponíveis para conexão GPIO são ilustrados pela figura a seguir.
 
 - ??? Conversão do valor do valor de tensão calculado pelo pid para o valor enviado para a EPOS. Qual a equação/Função que realiza isso? => Checar guia EPOS Command Library
 - ??? Criar esboço do código: inicialização da epos, comunicação, e transmissão de dados. (Ler e entender as funções)
+- ??? Esquemático dos botões e o display
+- ??? Código em C da interação dos botões e o display
