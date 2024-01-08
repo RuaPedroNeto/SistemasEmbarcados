@@ -13,7 +13,7 @@
 Pedro Rua Neto - 10309441 (Desenvolvimento de software, simulações, revisão bibliográfica, considerações de hardware, relatório)
 
 ## Resumo
-O objetivo deste projeto é desenvolver um motor para uma esteira de academia, desta forma, é requerido o controle PID para um motor DC (MAXON 118754) utilizando uma placa VS50 Colibri Viola e uma EPOS2 70/10 via protocolo CAN. Para interação com o usuário e definição da velocidade de refêrencia, é necessário a implementação de dois botões e uma display 7 segmentos. Neste relatório consta o desenvolvimento conceitual do projeto. A primeira parte é a definição da arquitetura do problema, referente à comunicação entre os hardwares. Então, foi definido a malha de controle fechada por meio do simulink e realizado o tuning dos ganhos do controlador. Referente ao protocolo CAN e interface entre a VF50 e a EPOS, foram feitas considerações de hardware e software, declarando quais portas devem ser utilizadas, e quais funções da biblioteca fornecida pela MAXON podem ser utéis. Por fim, foram realizadas indicações sobre como realizar a compilação cruzada e a implementação do código desenvolvido na placa utilizando uma host LINUX.
+O objetivo deste projeto é desenvolver um motor para uma esteira de academia, desta forma, é requerido o controle PID para um motor DC (MAXON 118754) utilizando uma placa VS50 Colibri Viola e uma EPOS2 70/10 via protocolo CAN. Para interação com o usuário e definição da velocidade de refêrencia, é necessário a implementação de dois botões e uma display 7 segmentos. Neste relatório consta o desenvolvimento conceitual do projeto. A primeira parte é a definição da arquitetura do problema, referente à comunicação entre os hardwares. Então, foi definido a malha de controle fechada por meio do simulink e realizado o tuning dos ganhos do controlador. Referente ao protocolo CAN e interface entre a VF50 e a EPOS, foram feitas considerações de hardware e software, declarando quais portas devem ser utilizadas, e quais funções da biblioteca fornecida pela MAXON podem ser utéis. Foi também desenvolvido o código e o esquemático dos botões e do display que faz a interface com o usuário. Por fim, foram realizadas indicações sobre como realizar a compilação cruzada e a implementação do código desenvolvido na placa utilizando uma host LINUX.
 
 ## Introdução
 Para o desenvolvimento do projeto desta disciplina, foi proposto o uso de uma VS50 Colibri Viola para o controle de velocidade utilizando PID em um motor DC simulando a funcionalidade de um motor de esteira de academia, portanto também é necessário que o sistema se adeque conforme a interação com o usuário, sendo necessário a implementação de dois botões e uma display de 7 segmentos.
@@ -267,16 +267,27 @@ Enquanto na VF50, os pinos disponíveis para conexão GPIO são ilustrados pela 
 ![Pinos para GPIO - Colibri VF50 - Viola](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/PINOS_VIOLA.png)
 
 Portanto, como alimentação 5V e GND pode-se utilizar os pinos 12 e 2 respectivamente. E seguindo datasheet da Viola, os pinos 8 ao 16 podem ser usados como I/O. Logo pode-se usar a seguinte configuração:
+
 Wire   Pin  SODIMM Number
+
 a      16   45
+
 b      15   79
+
 c      14   85
+
 d      13   97
+
 e      12   101
+
 f      11   103
+
 g      10   133
+
 inc     9   98
+
 red     8   135
+
 
 Desta forma um possível código que realiza a função de incremento e decremento é descrito abaixo:
 Nota: Download da biblioteca GPIO para acessar os pinos da Viola (https://developer.toradex.com/windows-ce/knowledge-base/gpio-lib-api#details)
