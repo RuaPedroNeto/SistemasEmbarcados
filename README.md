@@ -546,12 +546,9 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 ```
 
 ## Considerações Finais
-Para otimização do projeto realizado é necessário a implementação e validação dos conceitos desenvolvidos em bancada de teste. 
-
+Devido à indisponibilidades de horários, pois eu já estava trabalhando enquanto frequentava este curso, não foi possível testar e validar os conceitos e códigos desenvolvidos deste projeto. Para finalizar o controle do motor DC, seria apenas necessário entender como enviar a informação de tensão para a EPOS, afim de que ela consiga aplicá-la ao motor DC, sem o uso das funções prontas da biblioteca fornecida pela MAXON.
 
 ## To do
 
 - ??? Conversão do valor do valor de tensão calculado pelo pid para o valor enviado para a EPOS. Qual a equação/Função que realiza isso? => Checar guia EPOS Command Library
 - ??? Criar esboço do código: inicialização da epos, comunicação, e transmissão de dados. (Ler e entender as funções)
-- ??? Esquemático dos botões e o display
-- ??? Código em C da interação dos botões e o display
