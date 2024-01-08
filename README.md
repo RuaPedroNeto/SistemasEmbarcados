@@ -262,11 +262,250 @@ O esquemático é ilustrado pela figura abaixo:
 
 ![Esquemático de conexões para os botões e o display 7 segmentos](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/Imagem1.png)
 
-Enquanto na VF50, os pinos disponíveis para conexão GPIO são ilustrados pela figura a seguir.
+Enquanto na VF50, os pinos disponíveis para conexão GPIO são ilustrados pela figura a seguir. Mais informações no datasheet: https://docs.toradex.com/102879-colibri-arm-viola-carrier-board-datasheet.pdf
 
 ![Pinos para GPIO - Colibri VF50 - Viola](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/PINOS_VIOLA.png)
 
+Portanto, como alimentação 5V e GND pode-se utilizar os pinos 12 e 2 respectivamente. E seguindo datasheet da Viola, os pinos 8 ao 16 podem ser usados como I/O. Logo pode-se usar a seguinte configuração:
+Wire   Pin  SODIMM Number
+a      16   45
+b      15   79
+c      14   85
+d      13   97
+e      12   101
+f      11   103
+g      10   133
+inc     9   98
+red     8   135
 
+Desta forma um possível código que realiza a função de incremento e decremento é descrito abaixo:
+Nota: Download da biblioteca GPIO para acessar os pinos da Viola (https://developer.toradex.com/windows-ce/knowledge-base/gpio-lib-api#details)
+(https://developer.toradex.com/windows-ce/knowledge-base/how-to-use-gpio-library/)
+
+````
+#include <stdlib.h>
+#include <stdio.h>
+#include "GpioLib.h"
+
+int a = 45;//SODIMM Correspondente ao LED a pino 16
+int b = 79;//SODIMM Correspondente ao LED b pino 15
+int c = 85;//SODIMM Correspondente ao LED c pino 14
+int d = 97;//SODIMM Correspondente ao LED d pino 13
+int e = 101;//SODIMM Correspondente ao LED e pino 12
+int f = 103;//SODIMM Correspondente ao LED f pino 11
+int g = 133;//SODIMM Correspondente ao LED g pino 10
+int b1Pin = 98;//SODIMM Correspondente ao botão +
+int b2Pin = 135;//SODIMM Correspondente ao botão -
+
+
+void setup()
+{
+
+InitGPIOLib();		// Inicializa a GPIO
+
+  SetPinAltFn(a, -1, DIR_OUT);//Define a como saída
+  SetPinAltFn(b, -1, DIR_OUT);//Define b como saída
+  SetPinAltFn(c, -1, DIR_OUT);//Define c como saída
+  SetPinAltFn(d, -1, DIR_OUT);//Define d como saída
+  SetPinAltFn(e, -1, DIR_OUT);//Define e como saída
+  SetPinAltFn(f, -1, DIR_OUT);//Define f como saída
+  SetPinAltFn(g, -1, DIR_OUT);//Define g como saída
+
+SetPinAltFn(b1Pin, -1, DIR_IN) //Define b1Pin como entrada
+SetPinAltFn(b2Pin, -1, DIR_IN) //Define b2Pin como entrada
+
+}
+
+//Função para escrever o nº zero
+void zero() {
+  SetPinLevel(a, 1);
+  SetPinLevel(b, 1);
+  SetPinLevel(c, 1);
+  SetPinLevel(d, 1);
+  SetPinLevel(e, 1);
+  SetPinLevel(f, 1);
+  SetPinLevel(g, 0);
+  delay(100);
+}
+//Função para escrever o nº um
+void um() {
+  SetPinLevel(a, 0);
+  SetPinLevel(b, 1);
+  SetPinLevel(c, 1);
+  SetPinLevel(d, 0);
+  SetPinLevel(e, 0);
+  SetPinLevel(f, 0);
+  SetPinLevel(g, 0);
+  delay(100);
+}
+//Função para escrever o nº dois
+void dois() {
+  SetPinLevel(a, 1);
+  SetPinLevel(b, 1);
+  SetPinLevel(c, 0);
+  SetPinLevel(d, 1);
+  SetPinLevel(e, 1);
+  SetPinLevel(f, 0);
+  SetPinLevel(g, 1);
+  delay(100);
+}
+//Função para escrever o nº três
+void tres() {
+  SetPinLevel(a, 1);
+  SetPinLevel(b, 1);
+  SetPinLevel(c, 1);
+  SetPinLevel(d, 1);
+  SetPinLevel(e, 0);
+  SetPinLevel(f, 0);
+  SetPinLevel(g, 1);
+  delay(100);
+}
+//Função para escrever o nº quatro
+void quatro() {
+  SetPinLevel(a, 0);
+  SetPinLevel(b, 1);
+  SetPinLevel(c, 1);
+  SetPinLevel(d, 0);
+  SetPinLevel(e, 0);
+  SetPinLevel(f, 1);
+  SetPinLevel(g, 1);
+  delay(100);
+}
+//Função para escrever o nº cinco
+void cinco() {
+  SetPinLevel(a, 1);
+  SetPinLevel(b, 0);
+  SetPinLevel(c, 1);
+  SetPinLevel(d, 1);
+  SetPinLevel(e, 0);
+  SetPinLevel(f, 1);
+  SetPinLevel(g, 1);
+  delay(100);
+}
+//Função para escrever o nº seis
+void seis() {
+  SetPinLevel(a, 1);
+  SetPinLevel(b, 0);
+  SetPinLevel(c, 1);
+  SetPinLevel(d, 1);
+  SetPinLevel(e, 1);
+  SetPinLevel(f, 1);
+  SetPinLevel(g, 1);
+  delay(100);
+}
+//Função para escrever o nº sete
+void sete() {
+  SetPinLevel(a, 1);
+  SetPinLevel(b, 1);
+  SetPinLevel(c, 1);
+  SetPinLevel(d, 0);
+  SetPinLevel(e, 0);
+  SetPinLevel(f, 0);
+  SetPinLevel(g, 0);
+  delay(100);
+}
+//Função para escrever o nº oito
+void oito() {
+  SetPinLevel(a, 1);
+  SetPinLevel(b, 1);
+  SetPinLevel(c, 1);
+  SetPinLevel(d, 1);
+  SetPinLevel(e, 1);
+  SetPinLevel(f, 1);
+  SetPinLevel(g, 1);
+  delay(100);
+}
+//Função para escrever o nº nove
+void nove() {
+  SetPinLevel(a, 1);
+  SetPinLevel(b, 1);
+  SetPinLevel(c, 1);
+  SetPinLevel(d, 1);
+  SetPinLevel(e, 0);
+  SetPinLevel(f, 1);
+  SetPinLevel(g, 1);
+  delay(100);
+}
+
+
+void main(){
+
+unsigned char ucStatus_inc; // Variavel de travamento do incremento.
+unsigned char ucStatus_dec; // Variavel de travamento do decremento.
+unsigned int  uiContador;   // Variavel de armazenamento do contador.
+unsigned int  uiValor;      // Variavel auxiliar para exibição do contador.
+
+ucStatus_inc=0;      // Inicializa a variavel com o valor 0.
+ucStatus_dec=0;      // Inicializa a variavel com o valor 0.
+uiContador=0;        // Inicializa a variavel com o valor 0.
+
+	while(1){            // loop infinito
+
+// Le Tecla E Incrementa Contador.
+
+		if((GetPinLevel(b1Pin)==0)&&(ucStatus_inc==0)){   // Incrementa somente uma vez quando a tecla for pressionada.
+			ucStatus_inc=1;                       // Variavel de travamento do incremento.
+			uiContador++;                         
+				if(uiContador>9){
+					uiContador=9;
+				}
+		}
+
+		if((GetPinLevel(b1Pin)==1)&&(ucStatus_inc==1)){   // Volta a disponibilizar a opção de incremento quando a tecla for solta.
+		ucStatus_inc=0;
+		}
+
+// Le tecla e decrementa contador.
+		if((GetPinLevel(b2Pin)==0)&&(ucStatus_dec==0)){   // Decrementa somente uma vez quando a tecla for pressionada.
+			ucStatus_dec=1;                       // Variavel de travamento do decremento.
+			uiContador--;                         // Esse operador aritmetico(--) realiza o mesmo que variavel = variavel - 1.
+				if(uiContador<0){
+					uiContador=0;
+				}
+		}
+
+
+		if((GetPinLevel(b2Pin)==1)&&(ucStatus_dec==1)){   // Volta a disponibilizar a opção de incremento quando a tecla for solta.
+			ucStatus_dec=0;
+		}
+
+  switch (uicontador) {
+    case 0:
+      zero();//Executa a função zero
+      break;
+    case 1:
+      um();//Executa a função um
+      break;
+    case 2:
+      dois();//Executa a função dois
+      break;
+    case 3:
+      tres();//Executa a função três
+      break;
+    case 4:
+      quatro();//Executa a função quatro
+      break;
+    case 5:
+      cinco();//Executa a função cinco
+      break;
+    case 6:
+      seis();//Executa a função seis
+      break;
+    case 7:
+      sete();//Executa a função sete
+      break;
+    case 8:
+      oito();//Executa a função oito
+      break;
+    case 9:
+      nove();//Executa a função nove
+      break;
+
+  }
+
+}
+}
+````
 ## Implementação e compilação
 
 Para realizar a compilação do código PID é necessário a configuração da toolchain por meio do pacote SDK adequado para a placa VF50, pois a arquitetura do processador da placa é diferente da arquitetura do processador do host, portanto é necessário o processo de compilação cruzada. O pacote SDK se encontra no próprio site da Toradex. (https://drive.google.com/file/d/1hs9FL2272A4lUoBjPSdQIjZ0Vn0fZ6ZQ/view)
