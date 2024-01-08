@@ -256,6 +256,17 @@ void motor_start(double spd){
   }
 ````
 
+## Interface com usuário
+Para realizar a interface com usuário, será implementado dois botões e um display de 7 segmentos para indicar a velocidade de referência.
+O esquemático é ilustrado pela figura abaixo:
+
+![Esquemático de conexões para os botões e o display 7 segmentos](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/Imagem1.png)
+
+Enquanto na VF50, os pinos disponíveis para conexão GPIO são ilustrados pela figura a seguir.
+
+![Pinos para GPIO - Colibri VF50 - Viola](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/PINOS_VIOLA.png)
+
+
 ## Implementação e compilação
 
 Para realizar a compilação do código PID é necessário a configuração da toolchain por meio do pacote SDK adequado para a placa VF50, pois a arquitetura do processador da placa é diferente da arquitetura do processador do host, portanto é necessário o processo de compilação cruzada. O pacote SDK se encontra no próprio site da Toradex. (https://drive.google.com/file/d/1hs9FL2272A4lUoBjPSdQIjZ0Vn0fZ6ZQ/view)
@@ -285,14 +296,8 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 ```
 
 ## Considerações Finais
-Para otimização do projeto realizado é necessário a implementação e validação dos conceitos desenvolvidos em bancada de teste. Verificado o funcionamento do código de controle do motor, o próximo passo seria a implementação de dois botões e um display 7 segmentos.
+Para otimização do projeto realizado é necessário a implementação e validação dos conceitos desenvolvidos em bancada de teste. 
 
-Os botões são responsáveis pelo aumento/redução da velocidade de referência, enquanto o display deve mostrar ao usuário este valor.
-Um display 7 segmentos necessita de 8 pinos, enquanto os dois botões usariam 4 pinos.
-
-Os pinos disponíveis para conexão GPIO são ilustrados pela figura a seguir.
-
-![Pinos para GPIO - Colibri VF50 - Viola](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/PINOS_VIOLA.png)
 
 ## To do
 
