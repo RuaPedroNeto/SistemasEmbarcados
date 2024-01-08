@@ -115,7 +115,104 @@ VCS_Read_CAN_Frame(parameters)
 ````
 
 ![Funções de transmição de dados via CAN](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/CAN_Function.png)
- 
+
+Para inicializar a comunicação da EPOS com a placa, a função utilizada é:
+
+````VCS_OpenDevice()````
+
+![Função para iniciar a comunicação entre a EPOS e o novo dispositivo](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/opendevice.png)
+
+*Detalhe*: Conforme o guia, para estabelecer corretamente os parâmetros da VCS_OpenDevice(), use as funções VCS_GetDeviceNameSelection(), VCS_GetProtocolStackNameSelection(), VCS_Get_InterfaceNameSelection(), e VCS_GetPortNameSelection().
+Ex: VCS_OpenDevice(char* EPOS2, char* CANopen, char* , char* CAN0)
+
+Ao final do código lembre-se de fechar a porta da EPOS utilizando a função:
+VCS_CloseDevice(1);
+
+Para identificar o tipo e os parêmetros do motor, use as funções
+
+````
+VCS_SetMotorType()
+
+VCS_SetDcMotorParameterEx()
+````
+![Função para identificar o tipo do motor](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/motortype.png)
+
+![Função para identificar os parâmetros do motor](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/motorparam.png)
+
+Para identificar o tipo e os parâmetros do encoder, use as funções:
+
+````
+VCS_SetSensorType()
+
+VCS_SetIncEncoderParameter()
+````
+
+![Função para identificar o tipo do encoder](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/sensortype.png)
+
+![Função para identificar os parâmetros do encoder](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/encoder_param.png)
+
+É possível utilizar funções prontas para controle PID desta biblioteca como VCS_SetControllerGain(), vide EPOS Command Library.pdf, porém userá utilizado o código desenvolvido previamente pelo Tiago.
+
+Para configurar entradas e saídas digitais utilize as funções
+
+````
+VCS_DigitalInputConfiguration()
+
+VCS_DigitalOutputConfiguration()
+````
+![Funções para configurar as entradas e saídas digitais](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/diginpconfig.png)
+
+![Funções para configurar as entradas e saídas digitais](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/digoutconfig.png)
+
+Para configurar entradas/saídas analógicas, utilize:
+
+````
+VCS_AnalogInputConfiguration()
+
+VCS_AnalogOutputConfiguration()
+````
+
+![Funções para configurar as entradas e saídas analógicas](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/analoginpconfig.png)
+
+![Funções para configurar as entradas e saídas analógicas](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/analogoutconfig.png)
+
+Para ler ou escrever nos pinos de GPIO, utilize:
+
+
+````
+VCS_GetAllDigitalInputs()
+
+VCS_GetAllDigitalOutputs()
+
+VCS_SetAllDigitalOutputs()
+
+VCS_GetAnalogInput()
+
+VCS_SetAnalogOutput()
+
+````
+
+(Descrição completa em EPOS Command Library)
+
+Para realizar a leitura da velocidade com o encoder, utilize a função:
+
+````
+VCS_GetVelocityls()
+````
+
+![Função para ler a velocidade do encoder](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/getveloc.png)
+
+Para realizar o controle de velocidade do motor, a biblioteca fornece duas funções. A primeira estabelece o modo de operação como controle de velocidade, e a segunda estabelece o valor de velocidade a ser seguido:
+
+````
+VCS_SetOperationMode(); ou VCS_ActivateVelocityMode();
+
+VCS_SetVelocityMust()
+````
+
+Portanto, após leitura do guia EPOS Command Library, não há informações sobre como indicar à EPOS o valor de tensão que o código de PID retorna.
+
+
 ## Implementação e compilação
 
 Para realizar a compilação do código PID é necessário a configuração da toolchain por meio do pacote SDK adequado para a placa VF50, pois a arquitetura do processador da placa é diferente da arquitetura do processador do host, portanto é necessário o processo de compilação cruzada. O pacote SDK se encontra no próprio site da Toradex. (https://drive.google.com/file/d/1hs9FL2272A4lUoBjPSdQIjZ0Vn0fZ6ZQ/view)
