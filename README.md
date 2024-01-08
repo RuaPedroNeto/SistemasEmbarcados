@@ -154,7 +154,7 @@ VCS_SetIncEncoderParameter()
 
 ![Função para identificar os parâmetros do encoder](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/encoder_param.png)
 
-É possível utilizar funções prontas para controle PID desta biblioteca como VCS_SetControllerGain(), vide EPOS Command Library.pdf, porém userá utilizado o código desenvolvido previamente pelo Tiago.
+É possível utilizar funções prontas para controle PID desta biblioteca como VCS_SetControllerGain(), vide EPOS Command Library.pdf, porém será utilizado o código desenvolvido previamente pelo Tiago.
 
 Para configurar entradas e saídas digitais utilize as funções
 
@@ -288,7 +288,7 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 Para otimização do projeto realizado é necessário a implementação e validação dos conceitos desenvolvidos em bancada de teste. Verificado o funcionamento do código de controle do motor, o próximo passo seria a implementação de dois botões e um display 7 segmentos.
 
 Os botões são responsáveis pelo aumento/redução da velocidade de referência, enquanto o display deve mostrar ao usuário este valor.
-Um display 7 segmentos necessita de 8 pinos, enquanto os dois botões usaria 4 pinos.
+Um display 7 segmentos necessita de 8 pinos, enquanto os dois botões usariam 4 pinos.
 
 Os pinos disponíveis para conexão GPIO são ilustrados pela figura a seguir.
 
