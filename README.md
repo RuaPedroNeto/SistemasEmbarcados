@@ -517,6 +517,7 @@ uiContador=0;        // Inicializa a variavel com o valor 0.
 
 ## Esboço do código
 Após revisão das funções disponíveis pelas bibliotecas da EPOS tentou-se criar o primeiro esboço de como seria o código final de acordo com o seguinte flowchart
+
 ![Flowchart código final](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/diag.png)
 
 Logo, o código final seria como abaixo:
@@ -819,7 +820,4 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 ```
 
 ## Considerações Finais
-Devido à indisponibilidades de horários, pois eu já estava trabalhando enquanto frequentava este curso, não foi possível testar e validar os conceitos e códigos desenvolvidos deste projeto. Para finalizar o controle do motor DC, seria apenas necessário entender como enviar a informação de tensão para a EPOS, afim de que ela consiga aplicá-la ao motor DC, sem o uso das funções prontas da biblioteca fornecida pela MAXON.
-
-## To do
-- ??? Conversão do valor do valor de tensão calculado pelo pid para o valor enviado para a EPOS. Qual a equação/Função que realiza isso? => Checar guia EPOS Command Library
+Devido à indisponibilidades de horários, pois eu já estava trabalhando enquanto frequentava este curso, não foi possível testar e validar os conceitos e códigos desenvolvidos deste projeto. Para finalizar o controle do motor DC, seria apenas necessário entender como enviar a informação de tensão para a EPOS, afim de que ela consiga aplicá-la ao motor DC sem o uso das funções prontas da biblioteca fornecida pela MAXON.
