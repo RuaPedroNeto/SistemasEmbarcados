@@ -517,6 +517,13 @@ uiContador=0;        // Inicializa a variavel com o valor 0.
 }
 }
 ````
+
+## Esboço do código
+Após revisão das funções disponíveis pelas bibliotecas da EPOS tentou-se criar o primeiro esboço de como seria o código final de acordo com o seguinte flowchart
+![Flowchart código final](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/diag.png)
+
+
+
 ## Implementação e compilação
 
 Para realizar a compilação do código PID é necessário a configuração da toolchain por meio do pacote SDK adequado para a placa VF50, pois a arquitetura do processador da placa é diferente da arquitetura do processador do host, portanto é necessário o processo de compilação cruzada. O pacote SDK se encontra no próprio site da Toradex. (https://drive.google.com/file/d/1hs9FL2272A4lUoBjPSdQIjZ0Vn0fZ6ZQ/view)
