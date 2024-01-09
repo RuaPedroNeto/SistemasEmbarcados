@@ -515,6 +515,9 @@ uiContador=0;        // Inicializa a variavel com o valor 0.
 }
 ````
 
+O teste deste código foi realizado no software proteus utilizando um arduino como controlador. O código se encontra em "...src/simulacao_arduino"
+![Flowchart código final](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/New%20Project%20-%20Proteus%208%20Professional%20-%20Schematic%20Capture%202024-01-09%2017-30-57.mp4)
+
 ## Esboço do código
 Após revisão das funções disponíveis pelas bibliotecas da EPOS tentou-se criar o primeiro esboço de como seria o código final de acordo com o seguinte flowchart
 
