@@ -288,9 +288,15 @@ inc     9   98
 red     8   135
 
 
-Desta forma um possível código que realiza a função de incremento e decremento é descrito abaixo:
-Nota: Download da biblioteca GPIO para acessar os pinos da Viola (https://developer.toradex.com/windows-ce/knowledge-base/gpio-lib-api#details)
-(https://developer.toradex.com/windows-ce/knowledge-base/how-to-use-gpio-library/)
+Desta forma um possível código em C que realiza a função de incremento e decremento será descrito a seguir.
+
+O teste deste código foi realizado no software Proteus utilizando um arduino como controlador. O código para arduino se encontra em "...src/simulacao_arduino"
+
+![Simulacao display 7 segmentos, contador acionado por dois botões. Controle por arduino. Software Proteus](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/prot.png)
+
+(Video completo: https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/New%20Project%20-%20Proteus%208%20Professional%20-%20Schematic%20Capture%202024-01-09%2017-30-57.mp4)
+
+*Contador Display 7 Segmentos acionado por dois botões (Incremento/Decremento)*
 
 ````
 #include <stdlib.h>
@@ -515,8 +521,8 @@ uiContador=0;        // Inicializa a variavel com o valor 0.
 }
 ````
 
-O teste deste código foi realizado no software proteus utilizando um arduino como controlador. O código se encontra em "...src/simulacao_arduino"
-![Flowchart código final](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/New%20Project%20-%20Proteus%208%20Professional%20-%20Schematic%20Capture%202024-01-09%2017-30-57.mp4)
+Nota: Download da biblioteca GPIO para acessar os pinos da Viola (https://developer.toradex.com/windows-ce/knowledge-base/gpio-lib-api#details)
+(https://developer.toradex.com/windows-ce/knowledge-base/how-to-use-gpio-library/)
 
 ## Esboço do código
 Após revisão das funções disponíveis pelas bibliotecas da EPOS tentou-se criar o primeiro esboço de como seria o código final de acordo com o seguinte flowchart
