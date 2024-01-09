@@ -116,14 +116,13 @@ VCS_Send_CAN_Frame()
 
 VCS_Read_CAN_Frame()
 ````
-
-![Funções de transmição de dados via CAN](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/CAN_Function.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/CAN_Function.png)
 
 Para inicializar a comunicação da EPOS com a placa, a função utilizada é:
 
 ````VCS_OpenDevice()````
 
-![Função para iniciar a comunicação entre a EPOS e o novo dispositivo](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/opendevice.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/opendevice.png)
 
 *Detalhe*: Conforme o guia, para estabelecer corretamente os parâmetros da VCS_OpenDevice(), use as funções VCS_GetDeviceNameSelection(), VCS_GetProtocolStackNameSelection(), VCS_Get_InterfaceNameSelection(), e VCS_GetPortNameSelection().
 Ex: VCS_OpenDevice(char* EPOS2, char* CANopen, char* , char* CAN0)
@@ -138,9 +137,9 @@ VCS_SetMotorType()
 
 VCS_SetDcMotorParameterEx()
 ````
-![Função para identificar o tipo do motor](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/motortype.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/motortype.png)
 
-![Função para identificar os parâmetros do motor](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/motorparam.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/motorparam.png)
 
 Para identificar o tipo e os parâmetros do encoder, use as funções:
 
@@ -150,9 +149,9 @@ VCS_SetSensorType()
 VCS_SetIncEncoderParameter()
 ````
 
-![Função para identificar o tipo do encoder](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/sensortype.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/sensortype.png)
 
-![Função para identificar os parâmetros do encoder](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/encoder_param.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/encoder_param.png)
 
 É possível utilizar funções prontas para controle PID desta biblioteca como VCS_SetControllerGain(), vide EPOS Command Library.pdf, porém será utilizado o código desenvolvido previamente pelo Tiago.
 
@@ -163,9 +162,9 @@ VCS_DigitalInputConfiguration()
 
 VCS_DigitalOutputConfiguration()
 ````
-![Funções para configurar as entradas e saídas digitais](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/diginpconfig.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/diginpconfig.png)
 
-![Funções para configurar as entradas e saídas digitais](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/digoutconfig.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/digoutconfig.png)
 
 Para configurar entradas/saídas analógicas, utilize:
 
@@ -175,9 +174,9 @@ VCS_AnalogInputConfiguration()
 VCS_AnalogOutputConfiguration()
 ````
 
-![Funções para configurar as entradas e saídas analógicas](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/analoginpconfig.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/analoginpconfig.png)
 
-![Funções para configurar as entradas e saídas analógicas](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/analogoutconfig.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/analogoutconfig.png)
 
 Para ler ou escrever nos pinos de GPIO, utilize:
 
@@ -203,7 +202,7 @@ Para realizar a leitura da velocidade com o encoder, utilize a função:
 VCS_GetVelocityls()
 ````
 
-![Função para ler a velocidade do encoder](https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/getveloc.png)
+(https://github.com/RuaPedroNeto/SistemasEmbarcados/blob/main/docs/images/fncs/getveloc.png)
 
 Para realizar o controle de velocidade do motor, a biblioteca fornece duas funções. A primeira estabelece o modo de operação como controle de velocidade, e a segunda estabelece o valor de velocidade a ser seguido:
 
@@ -511,9 +510,7 @@ uiContador=0;        // Inicializa a variavel com o valor 0.
     case 9:
       nove();//Executa a função nove
       break;
-
   }
-
 }
 }
 ````
@@ -787,7 +784,7 @@ measurement = VCS_ReadCANFrame(KeyHandle, CobID, Length, VCS_GetVelocityls(KeyHa
 //    VCS_WriteCANFrame(...)
 
     }
-
+    VCS_CloseDevice(1);
     return 0;
 }
 ````
@@ -825,6 +822,4 @@ No terminal da placa, o comando para rodar o código é o seguinte:
 Devido à indisponibilidades de horários, pois eu já estava trabalhando enquanto frequentava este curso, não foi possível testar e validar os conceitos e códigos desenvolvidos deste projeto. Para finalizar o controle do motor DC, seria apenas necessário entender como enviar a informação de tensão para a EPOS, afim de que ela consiga aplicá-la ao motor DC, sem o uso das funções prontas da biblioteca fornecida pela MAXON.
 
 ## To do
-
 - ??? Conversão do valor do valor de tensão calculado pelo pid para o valor enviado para a EPOS. Qual a equação/Função que realiza isso? => Checar guia EPOS Command Library
-- ??? Criar esboço do código: inicialização da epos, comunicação, e transmissão de dados. (Ler e entender as funções)
